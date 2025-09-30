@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfLink - Connect Students with Faculty</title>
+    <meta name="description" content="Streamline academic consultations with our simple booking platform" />
+    <meta name="author" content="ProfLink Team" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ProfLink - Connect Students with Faculty" />
+    <meta property="og:description" content="Streamline academic consultations with our simple booking platform" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="ProfLink - Connect Students with Faculty" />
+    <meta property="twitter:description" content="Streamline academic consultations with our simple booking platform" />
+    
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/main.css">
+    
+    <!-- Lucide Icons (CDN for icons) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="min-h-screen bg-gradient-subtle">
+    <!-- Navigation -->
+    <nav class="border-b bg-card-50 backdrop-blur-sm sticky top-0 z-50" id="navbar">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <button id="home-btn" class="nav-brand">
+                    <i data-lucide="graduation-cap" class="h-6 w-6 mr-2"></i>
+                    ProfLink
+                </button>
+                <div class="flex items-center gap-2">
+                    <button id="browse-faculty-btn" class="btn btn-ghost btn-sm">
+                        Browse Faculty
+                    </button>
+                    <button id="student-portal-btn" class="btn btn-ghost btn-sm">
+                        Student Portal
+                    </button>
+                    <button id="faculty-portal-btn" class="btn btn-ghost btn-sm">
+                        Faculty Portal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 py-8" id="main-content">
+        <!-- Home View (Default) -->
+        <div id="home-view" class="view active">
+            <!-- Hero Section -->
+            <section class="text-center space-y-8 py-12">
+                <div class="space-y-4">
+                    <h1 class="text-4xl md-text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                        Connect Students with Faculty
+                    </h1>
+                    <p class="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                        Streamline academic consultations with our simple booking platform. 
+                        Browse faculty, book appointments, and manage your academic meetings all in one place.
+                    </p>
+                </div>
+                
+                <div class="relative max-w-4xl mx-auto">
+                    <img 
+                        src="./assets/hero-consultation.jpg" 
+                        alt="Students and faculty in consultation"
+                        class="rounded-2xl shadow-elegant w-full h-300 md-h-400 object-cover"
+                    />
+                    <div class="absolute inset-0 bg-gradient-overlay rounded-2xl"></div>
+                </div>
+
+                <!-- Call to Action Buttons -->
+                <div class="flex flex-col sm-flex-row gap-4 justify-center items-center">
+                    <button id="cta-student-btn" class="btn btn-primary btn-lg">
+                        <i data-lucide="user" class="h-5 w-5 mr-2"></i>
+                        Student Dashboard
+                        <i data-lucide="arrow-right" class="h-5 w-5 ml-2"></i>
+                    </button>
+                    <button id="cta-faculty-btn" class="btn btn-secondary btn-lg">
+                        <i data-lucide="users" class="h-5 w-5 mr-2"></i>
+                        Faculty Portal
+                        <i data-lucide="arrow-right" class="h-5 w-5 ml-2"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="grid md-grid-cols-3 gap-8 py-12">
+                <div class="card text-center p-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-light mb-4">
+                        <i data-lucide="calendar" class="h-8 w-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Easy Scheduling</h3>
+                    <p class="text-muted-foreground">
+                        Book appointments with your preferred faculty members in just a few clicks.
+                    </p>
+                </div>
+                
+                <div class="card text-center p-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-light mb-4">
+                        <i data-lucide="message-square" class="h-8 w-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Real-time Communication</h3>
+                    <p class="text-muted-foreground">
+                        Stay connected with faculty through integrated messaging and notifications.
+                    </p>
+                </div>
+                
+                <div class="card text-center p-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-light mb-4">
+                        <i data-lucide="clock" class="h-8 w-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Time Management</h3>
+                    <p class="text-muted-foreground">
+                        Efficiently manage your consultation schedule with automated reminders.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Student Dashboard View -->
+        <div id="student-dashboard-view" class="view">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-3xl font-bold">Student Dashboard</h1>
+                    <button class="btn btn-primary" id="book-appointment-btn">
+                        <i data-lucide="plus" class="h-4 w-4 mr-2"></i>
+                        Book Appointment
+                    </button>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-1 md-grid-cols-3 gap-6">
+                    <div class="card p-6">
+                        <h3 class="text-sm font-medium text-muted-foreground">Upcoming Appointments</h3>
+                        <p class="text-2xl font-bold text-primary" id="upcoming-count">3</p>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-sm font-medium text-muted-foreground">This Month</h3>
+                        <p class="text-2xl font-bold text-primary" id="month-count">8</p>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-sm font-medium text-muted-foreground">Total Consultations</h3>
+                        <p class="text-2xl font-bold text-primary" id="total-count">24</p>
+                    </div>
+                </div>
+                
+                <!-- Appointments List -->
+                <div class="space-y-4" id="appointments-container">
+                    <!-- Appointments will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Faculty Dashboard View -->
+        <div id="faculty-dashboard-view" class="view">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-3xl font-bold">Faculty Dashboard</h1>
+                    <button class="btn btn-primary" id="set-availability-btn">
+                        <i data-lucide="calendar-plus" class="h-4 w-4 mr-2"></i>
+                        Set Availability
+                    </button>
+                </div>
+                
+                <!-- Faculty Quick Stats -->
+                <div class="grid grid-cols-1 md-grid-cols-4 gap-6">
+                    <div class="card p-6">
+                        <h3 class="text-sm font-medium text-muted-foreground">Today's Appointments</h3>
+                        <p class="text-2xl font-bold text-primary" id="faculty-today-count">2</p>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-sm font-medium text-muted-foreground">This Week</h3>
+                        <p class="text-2xl font-bold text-primary" id="faculty-week-count">12</p>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-sm font-medium text-muted-foreground">Pending Requests</h3>
+                        <p class="text-2xl font-bold text-orange" id="pending-count">4</p>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-sm font-medium text-muted-foreground">Average Rating</h3>
+                        <p class="text-2xl font-bold text-primary" id="rating">4.8</p>
+                    </div>
+                </div>
+                
+                <!-- Faculty Schedule -->
+                <div class="space-y-4" id="faculty-schedule-container">
+                    <!-- Faculty schedule will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Faculty Directory View -->
+        <div id="browse-faculty-view" class="view">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-3xl font-bold">Faculty Directory</h1>
+                    <div class="flex gap-4">
+                        <input type="text" placeholder="Search faculty..." class="input" id="faculty-search">
+                        <select class="select" id="department-filter">
+                            <option value="">All Departments</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Faculty Grid -->
+                <div class="grid grid-cols-1 md-grid-cols-2 lg-grid-cols-3 gap-6" id="faculty-grid">
+                    <!-- Faculty cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container for Notifications -->
+    <div id="toast-container" class="fixed top-4 right-4 space-y-2 z-50">
+        <!-- Toast notifications will appear here -->
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div id="modal-content" class="modal-content">
+            <!-- Modal content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/components.js"></script>
+    <script src="./scripts/data.js"></script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
