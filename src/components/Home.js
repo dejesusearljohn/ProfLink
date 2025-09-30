@@ -4,7 +4,7 @@ import { User, Users, ArrowRight, Calendar, MessageSquare, Clock } from 'lucide-
 
 const Home = () => {
     return (
-        <div className="space-y-16">
+        <div className="space-y-1">
             {/* Hero Section */}
             <section className="text-center space-y-8 py-12">
                 <div className="space-y-4">
@@ -25,27 +25,27 @@ const Home = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-overlay rounded-2xl"></div>
                 </div>
-
-                {/* Call to Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <Link 
-                        to="/student-dashboard" 
-                        className="btn btn-primary btn-lg"
-                    >
-                        <User className="h-5 w-5 mr-2" />
-                        Student Dashboard
-                        <ArrowRight className="h-5 w-5 ml-2" />
-                    </Link>
-                    <Link 
-                        to="/faculty-dashboard" 
-                        className="btn btn-secondary btn-lg"
-                    >
-                        <Users className="h-5 w-5 mr-2" />
-                        Faculty Portal
-                        <ArrowRight className="h-5 w-5 ml-2" />
-                    </Link>
-                </div>
             </section>
+
+            {/* Call to Action Buttons - Positioned between hero and features */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link 
+                    to="/student-dashboard" 
+                    className="btn btn-primary btn-lg"
+                >
+                    <User className="h-5 w-5 mr-2" />
+                    Student Dashboard
+                    <ArrowRight className="h-5 w-5 ml-2" />
+                </Link>
+                <Link 
+                    to="/faculty-dashboard" 
+                    className="btn btn-secondary btn-lg"
+                >
+                    <Users className="h-5 w-5 mr-2" />
+                    Faculty Portal
+                    <ArrowRight className="h-5 w-5 ml-2" />
+                </Link>
+            </div>
 
             {/* Features Section */}
             <section className="grid md:grid-cols-3 gap-8 py-12">
