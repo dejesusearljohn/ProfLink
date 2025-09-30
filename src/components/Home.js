@@ -30,19 +30,11 @@ const Home = () => {
             {/* Call to Action Buttons - Positioned between hero and features */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link 
-                    to="/student-dashboard" 
+                    to="/login" 
                     className="btn btn-primary btn-lg"
                 >
                     <User className="h-5 w-5 mr-2" />
-                    Student Dashboard
-                    <ArrowRight className="h-5 w-5 ml-2" />
-                </Link>
-                <Link 
-                    to="/faculty-dashboard" 
-                    className="btn btn-secondary btn-lg"
-                >
-                    <Users className="h-5 w-5 mr-2" />
-                    Faculty Portal
+                    Proceed to Login
                     <ArrowRight className="h-5 w-5 ml-2" />
                 </Link>
             </div>
