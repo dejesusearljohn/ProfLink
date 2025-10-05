@@ -136,31 +136,46 @@
 /* Navigation Styles */
 nav {
   border-bottom: 1px solid hsl(var(--border));
-  background: hsla(var(--card), 0.5);
-  backdrop-filter: blur(8px);
+  background: hsla(var(--card), 0.95);
+  backdrop-filter: blur(12px);
+  min-height: 64px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .bg-card-50 {
-  background: hsla(var(--card), 0.5);
+  background: hsla(var(--card), 0.95);
 }
 
+/* Navigation Container */
+.nav-container {
+  position: relative;
+  width: 100%;
+  padding: 0.75rem 1rem;
+}
+
+/* Brand styling */
 .nav-brand {
+  font-size: 1.25rem;
+  transition: all 0.2s ease-in-out;
   display: flex;
   align-items: center;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: hsl(var(--primary));
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: var(--border-radius);
-  transition: color var(--transition-fast);
-  text-decoration: none;
+}
+
+/* Responsive brand sizing */
+@media (min-width: 768px) {
+  .nav-brand {
+    font-size: 1.375rem;
+  }
+}
+
+.nav-brand svg {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  margin-right: 0.75rem !important;
 }
 
 .nav-brand:hover {
-  color: hsl(var(--primary-glow));
+  transform: translateY(-1px);
 }
 
 /* Button Styles */
@@ -168,11 +183,13 @@ nav {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1.125rem;
   border-radius: var(--border-radius);
   border: 1px solid transparent;
+  min-height: 44px;
+  box-sizing: border-box;
   cursor: pointer;
   transition: all var(--transition-fast);
   text-decoration: none;
@@ -288,6 +305,17 @@ nav {
   background: none;
 }
 
+/* Mobile-only page centering */
+@media (max-width: 900px) {
+  .bg-facebook-bg {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+}
+
 .facebook-container {
   min-height: auto;
   display: flex;
@@ -304,10 +332,41 @@ nav {
   padding-right: 32px;
   display: flex;
   align-items: center;
+  /* Desktop: Left-aligned layout */
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .facebook-brand-content {
   max-width: 500px;
+  /* Desktop: Left-aligned content */
+  text-align: left;
+}
+
+/* Desktop-specific layout preservation (901px and above) */
+@media (min-width: 901px) {
+  .facebook-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: initial;
+  }
+  
+  .facebook-branding {
+    justify-content: flex-start;
+    text-align: left;
+    width: auto;
+    align-items: center;
+  }
+  
+  .facebook-brand-content {
+    text-align: left;
+    margin: 0;
+    width: auto;
+    display: block;
+    flex-direction: initial;
+    align-items: initial;
+  }
 }
 
 .facebook-title {
@@ -398,6 +457,187 @@ nav {
   gap: 8px;
   margin: 8px 0;
 }
+
+/* Navigation Links Styling */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-links .btn {
+  white-space: nowrap;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.875rem;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Responsive navigation spacing */
+@media (min-width: 640px) {
+  .nav-links {
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-links .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Navigation Brand Responsive */
+.nav-brand {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .nav-brand {
+    font-size: 1.375rem;
+  }
+}
+
+/* Mobile Navigation Toggle */
+/* Mobile toggle button - ONLY visible on mobile */
+.nav-toggle {
+  padding: 0.5rem !important;
+  border-radius: var(--border-radius);
+  min-width: 44px;
+  min-height: 44px;
+  transition: background-color var(--transition-fast);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: hsl(var(--foreground));
+  /* Hidden by default - only show on mobile */
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle:hover {
+  background: hsl(var(--accent));
+}
+
+.nav-toggle svg {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+/* Show hamburger menu ONLY on mobile devices */
+@media (max-width: 639px) {
+  .nav-toggle {
+    display: inline-flex !important;
+  }
+}
+
+/* Ensure hamburger is hidden on desktop and tablets */
+@media (min-width: 640px) {
+  .nav-toggle {
+    display: none !important;
+  }
+  
+  .nav-toggle.sm\\:hidden {
+    display: none !important;
+  }
+}
+
+/* Desktop Navigation Links */
+.desktop-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Override Tailwind hidden class on desktop */
+@media (min-width: 640px) {
+  .desktop-links.hidden.sm\\:flex {
+    display: flex !important;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+/* Enhanced desktop navigation styling */
+@media (min-width: 1024px) {
+  .desktop-links {
+    gap: 1rem;
+  }
+  
+  .desktop-links .nav-links {
+    gap: 1rem;
+  }
+}
+
+/* Ensure desktop links are hidden on mobile */
+@media (max-width: 639px) {
+  .desktop-links {
+    display: none !important;
+  }
+}
+
+/* Standard Responsive Layout */
+@media (max-width: 767px) {
+  .nav-container {
+    padding: 0.75rem;
+  }
+  
+  .nav-links .btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Mobile nav adjustments */
+@media (max-width: 639px) {
+  nav .flex.items-center.justify-between {
+    min-height: 60px;
+  }
+  
+  .nav-brand {
+    font-size: 1.25rem !important;
+  }
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  background: hsla(var(--card), 0.98);
+  border-top: 1px solid hsl(var(--border));
+  box-shadow: var(--shadow-lg);
+  padding: 1rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 240ms ease-in-out, opacity 240ms ease-in-out;
+  opacity: 0;
+}
+
+.mobile-menu.open {
+  display: block;
+  max-height: 600px;
+  opacity: 1;
+}
+
+.mobile-menu .nav-links {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.mobile-menu .btn {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+/* Removed duplicate 480px media query - consolidated above */
 
 .facebook-user-option {
   flex: 1;
@@ -566,13 +806,29 @@ nav {
 @media (max-width: 900px) {
   .facebook-container {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
+    text-align: center;
   }
   
   .facebook-branding {
     padding-right: 0;
-    padding-bottom: 32px;
+    padding-bottom: 24px;
+    width: 100%;
+    /* Center content on mobile and tablets */
+    justify-content: center;
     text-align: center;
+    align-items: center;
+  }
+  
+  .facebook-brand-content {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .facebook-title {
@@ -592,6 +848,25 @@ nav {
 @media (max-width: 640px) {
   .facebook-container {
     padding: 12px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Ensure perfect centering on smaller mobile screens */
+  .facebook-branding {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .facebook-brand-content {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .facebook-title {
@@ -618,6 +893,42 @@ nav {
   
   .facebook-demo-buttons {
     flex-direction: column;
+  }
+}
+
+/* Extra small mobile screens - ensure perfect centering */
+@media (max-width: 480px) {
+  .facebook-container {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  .facebook-branding {
+    justify-content: center !important;
+    text-align: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 1rem 0.5rem;
+  }
+  
+  .facebook-brand-content {
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .facebook-title {
+    font-size: 36px;
+    text-align: center;
+  }
+  
+  .facebook-tagline {
+    font-size: 18px;
+    text-align: center;
   }
 }
 
@@ -683,11 +994,12 @@ nav {
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.5rem;
+  padding: 0.1rem 0.5rem;
   font-size: 0.75rem;
   font-weight: 500;
   border-radius: var(--border-radius);
   white-space: nowrap;
+  margin-left: 1rem;
 }
 
 .badge-primary {
