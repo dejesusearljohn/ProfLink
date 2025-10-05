@@ -399,6 +399,72 @@ nav {
   margin: 8px 0;
 }
 
+/* Responsive navigation styles */
+.nav-toggle {
+  background: transparent;
+  border: none;
+  color: hsl(var(--foreground));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-links .nav-links > * {
+  margin-right: 0.5rem;
+}
+
+.mobile-menu .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Small tweaks for buttons inside nav on mobile */
+.mobile-menu .btn {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+@media (min-width: 640px) {
+  .mobile-menu { display: none !important; }
+  .nav-toggle { display: none !important; }
+  .desktop-links { display: flex !important; }
+}
+
+/* Responsive navigation styles */
+.nav-container { position: relative; }
+
+/* Desktop links visible by default; mobile menu hidden */
+.desktop-links { display: flex; align-items: center; gap: 0.5rem; }
+.nav-toggle { display: none; background: transparent; border: none; cursor: pointer; color: hsl(var(--foreground)); }
+
+/* Mobile: show toggle and stack links vertically */
+@media (max-width: 768px) {
+  .desktop-links { display: none; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+
+  .mobile-menu {
+    display: block;
+    background: hsla(var(--card), 0.98);
+    border-top: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-lg);
+    padding: 0.75rem 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 240ms ease-in-out, opacity 240ms ease-in-out;
+    opacity: 0;
+    z-index: 40;
+  }
+
+  .mobile-menu.open { max-height: 600px; opacity: 1; }
+
+  .mobile-menu .btn { width: 100%; justify-content: flex-start; margin: 0.25rem 0; }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu { display: none !important; }
+}
+
 .facebook-user-option {
   flex: 1;
   display: flex;
@@ -683,11 +749,12 @@ nav {
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.5rem;
+  padding: 0.1rem 0.5rem;
   font-size: 0.75rem;
   font-weight: 500;
   border-radius: var(--border-radius);
   white-space: nowrap;
+  margin-left: 1rem;
 }
 
 .badge-primary {
